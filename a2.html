@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Sample Website</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f4f4f4;
+        color: #333;
+        transition: background 0.3s, color 0.3s;
+      }
+      header {
+        background: #2c3e50;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+      }
+      nav ul {
+        list-style: none;
+        padding: 0;
+      }
+      nav ul li {
+        display: inline;
+        margin: 0 15px;
+      }
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      section {
+        padding: 40px;
+        text-align: center;
+      }
+      .card {
+        background: white;
+        padding: 20px;
+        margin: 20px auto;
+        width: 60%;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+      footer {
+        background: #2c3e50;
+        color: white;
+        text-align: center;
+        padding: 15px 0;
+        margin-top: 30px;
+      }
+      .dark-mode {
+        background: #1e1e1e;
+        color: #ddd;
+      }
+      button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        margin-top: 10px;
+        cursor: pointer;
+        background: #2c3e50;
+        color: white;
+        font-weight: bold;
+      }
+      button:hover {
+        background: #34495e;
+      }
+      input,
+      textarea {
+        width: 90%;
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to XAHAB Website</h1>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="home">
+      <div class="card">
+        <h2>Home</h2>
+        <p>This is a Website that i code in my free time</p>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="card">
+        <h2>About Me</h2>
+        <p>
+          Hello! My name is Ahmad Xahab. I enjoy learning web design and coding.
+          This is a sample portfolio site.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="card">
+        <h2>Contact</h2>
+        <form id="contactForm">
+          <input
+            type="text"
+            name="from_name"
+            placeholder="Your Name"
+            required
+          /><br />
+          <input
+            type="email"
+            name="from_email"
+            placeholder="Your Email"
+            required
+          /><br />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            required
+          ></textarea
+          ><br />
+          <button type="submit">📩 Send</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script>
+      // Initialize EmailJS with your Public Key
+      (function () {
+        emailjs.init("4Tk1VnCs7KEzYTiyi");
+      })();
+
+      // Dark mode toggle
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+      }
+
+      // Handle contact form submission
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          emailjs.sendForm("service_xah111", "template_z5qqodc", this).then(
+            function () {
+              alert("✅ Message sent successfully!");
+              document.getElementById("contactForm").reset();
+            },
+            function (error) {
+              alert(
+                "❌ Failed to send message. Error: " + JSON.stringify(error)
+              );
+            }
+          );
+        });
+    </script>
+  </body>
+</html>
